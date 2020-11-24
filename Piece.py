@@ -2,14 +2,14 @@
 
 class Piece:
 
-    def __init__(self, types=[], hist=0.0):
+    def __init__(self, type, hist=0.0):
         """
 
         :param types: A vector with 4 boolean values, one for each side.
                         position 0: 0 degrees
                         position 1: 90 degrees rotated and so on
         """
-        self.sides_type = types
+        self.isEdge = type
         self.descriptor = hist
         self.position = (-1, -1)
 
@@ -21,8 +21,17 @@ class Piece:
         """
         self.position = position
 
+    def setDescriptor(self, descriptor):
+        self.descriptor = descriptor
+
+    def getDescriptor(self):
+        return self.descriptor
+
+    def getType(self):
+        return self.isEdge
+
     def __str__(self):
-        return "{}, Descriptor: {}".format(self.position, self.descriptor)
+        return str(self.position)+": "+str( self.descriptor)
 
 
     def __gt__(self, other):
